@@ -1,0 +1,7 @@
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <div class="modal-footer">
+    <%= f.submit "Create list", class: "btn btn-primary" %>
+    <%= link_to "Cancel", lists_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

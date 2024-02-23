@@ -1,0 +1,44 @@
+<div class="list-banner">
+  <div class="d-flex flex-column justify-content-center align-items-center h-100">
+    <h1 class="text-white"><%= @list.name %></h1>
+  </div>
+</div>
+
+<div class="my-2">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBookmarkModal">
+    Add bookmark
+  </button>
+</div>
+
+<div class="row bg-light">
+  <% if @list.bookmarks.length == 0 %>
+    <p>There are no bookmarks</p>
+  <% else %>
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card border col-3 m-3 p-3">
+        <h3><%= bookmark.movie.title %></h3>
+        <p><%= bookmark.comment %></p>
+        <%= link_to "Delete",
+          list_bookmark_path(@list, bookmark),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+          class: "btn btn-danger"
+        %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addBookmarkModal" tabindex="-1" aria-labelledby="addBookmarkModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addBookmarkModalLabel">Add new bookmark</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render "/bookmarks/form", bookmark: @bookmark %>
+      </div>
+    </div>
+  </div>
+</div>

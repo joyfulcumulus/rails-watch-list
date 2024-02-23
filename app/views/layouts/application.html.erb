@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg bg-primary bg-opacity-25 sticky-top">
+      <div class="container-fluid">
+        <h1 class="navbar-brand">Movieflix</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-2">
+              <%= link_to "My lists", lists_path, class: "btn btn-primary" %>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="#" class="btn btn-primary">My Account</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

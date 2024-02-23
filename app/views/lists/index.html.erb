@@ -1,0 +1,37 @@
+<div class="welcome-banner">
+  <div class="d-flex flex-column justify-content-center align-items-center h-100">
+    <h1 class="text-white">Save any kind of movie</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addListModal">
+      Add new list
+    </button>
+  </div>
+</div>
+
+<div class="row bg-light">
+  <% if @lists.length == 0 %>
+    <p>There are no lists</p>
+  <% else %>
+    <% @lists.each do |list| %>
+      <div class="card border col-3 m-3 p-3">
+        <p class="my-2"><%= list.name %></p>
+        <%= link_to "See details", list_path(list), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addListModal" tabindex="-1" aria-labelledby="addListModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h1 class="modal-title fs-5" id="addListModalLabel">Add new list</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-light">
+        <%= render "form", list: @list %>
+      </div>
+    </div>
+  </div>
+</div>
