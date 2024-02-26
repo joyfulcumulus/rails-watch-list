@@ -20,12 +20,34 @@
 }
 
 .list-banner {
-  background-image: asset-url("list-banner.PNG");
+  // background-image: asset-url("list-banner.PNG"); # if use local storage
   height: 200px;
   width: 100vw;
   background-size: cover;
+  background-position: center;
 }
 
 .list-info {
   width: 75vw;
+}
+
+.bookmark-image {
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bookmark-header {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.bookmark-info {
+  font-size: 0.8rem;
+}
+
+.delete-button {
+  color: #E67E22;
+  text-decoration: none;
+  font-size: 0.9rem;
 }

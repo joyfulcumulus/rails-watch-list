@@ -1,6 +1,7 @@
 <h1>Add a list</h1>
 <%= simple_form_for @list do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "Create list", class: "btn btn-primary" %>
   <%= link_to "Cancel", lists_path, class: "btn btn-light" %>
 <% end %>

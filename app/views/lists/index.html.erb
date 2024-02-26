@@ -13,13 +13,13 @@
   <% else %>
     <% @lists.each do |list| %>
       <div class="card border col-3 m-3 p-3">
+        <%= cl_image_tag list.photo.key, crop: :fill %>
         <p class="my-2"><%= list.name %></p>
         <%= link_to "See details", list_path(list), class: "btn btn-primary" %>
       </div>
     <% end %>
   <% end %>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="addListModal" tabindex="-1" aria-labelledby="addListModalLabel" aria-hidden="true">

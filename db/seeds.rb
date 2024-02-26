@@ -13,10 +13,10 @@ List.create(name: "Drama")
 List.create(name: "All Time Favourites")
 List.create(name: "Girl Power")
 
-# need to change sampling of ids for the bookmark
-Bookmark.create(comment: "Recommended by John", movie_id: 3, list_id: 2)
-Bookmark.create(comment: "Superhero movie revisited in 2020", movie_id: , list_id: 3)
-Bookmark.create(comment: "Spielberg masterly Oscar winning drama", movie_id: 2, list_id: 2)
-Bookmark.create(comment: "Stephen King's 1996 book", movie_id: 4, list_id: 3)
+# need to change sampling of ids for the bookmark as the ids are dynamic.
+# Bookmark.create(comment: "Recommended by John", movie_id: 3, list_id: 2)
+# Bookmark.create(comment: "Superhero movie revisited in 2020", movie_id: , list_id: 3)
+# Bookmark.create(comment: "Spielberg masterly Oscar winning drama", movie_id: 2, list_id: 2)
+# Bookmark.create(comment: "Stephen King's 1996 book", movie_id: 4, list_id: 3)
 
 puts "Finished"

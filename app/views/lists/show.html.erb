@@ -1,4 +1,7 @@
-<div class="list-banner">
+<div
+  class="list-banner"
+  style="background-image: url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')"
+>
   <div class="d-flex flex-column justify-content-center align-items-center h-100">
     <h1 class="text-white"><%= @list.name %></h1>
   </div>
@@ -18,14 +21,18 @@
       <% else %>
         <% @list.bookmarks.each do |bookmark| %>
           <div class="card border col-4 p-3">
-            <h3 class="fs-5"><%= "#{bookmark.movie.title} - #{bookmark.movie.rating}☆" %></h3>
-            <p class="fs-6"><%= bookmark.movie.overview %></p>
+            <img src= <%= bookmark.movie.poster_url %> class="bookmark-image">
+            <h3 class="bookmark-header"><%= "#{bookmark.movie.title} - #{bookmark.movie.rating}☆" %></h3>
+            <p class="bookmark-info"><%= bookmark.movie.overview %></p>
             <div class="d-flex justify-content-between">
-              <p class="fs-6"><em><%= bookmark.comment %></em></p>
+              <p class="bookmark-info">
+                <strong><i class="fa-solid fa-quote-left"></i></strong>
+                <em><%= bookmark.comment %></em>
+              </p>
               <%= link_to "Delete",
                 list_bookmark_path(@list, bookmark),
                 data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-                class: "btn btn-outline-warning"
+                class: "delete-button"
               %>
             </div>
           </div>
@@ -35,6 +42,16 @@
   </div>
 </div>
 
+<hr>
+
+<div>
+  <h2>Reviews on this list</h2>
+  <%%>
+  <%= link_to "Add a Review",
+    new_list_review_path(params[:id]),
+    class: "btn btn-primary"
+  %>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addBookmarkModal" tabindex="-1" aria-labelledby="addBookmarkModalLabel" aria-hidden="true">

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   resources :lists do
     resources :bookmarks, only: %i[new create destroy]
+    resources :reviews, only: %i[index new create]
   end
-
 end
