@@ -4,29 +4,37 @@
   </div>
 </div>
 
-<div class="my-2">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBookmarkModal">
-    Add bookmark
-  </button>
+<div class="d-flex justify-content-center align-items-start">
+  <div class="list-info d-flex flex-column">
+    <div class="my-2 d-flex flex-row-reverse">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBookmarkModal">
+        Add bookmark
+      </button>
+    </div>
+
+    <div class="row gx-5 bg-light">
+      <% if @list.bookmarks.length == 0 %>
+        <p>There are no bookmarks</p>
+      <% else %>
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="card border col-4 p-3">
+            <h3 class="fs-5"><%= "#{bookmark.movie.title} - #{bookmark.movie.rating}☆" %></h3>
+            <p class="fs-6"><%= bookmark.movie.overview %></p>
+            <div class="d-flex justify-content-between">
+              <p class="fs-6"><em><%= bookmark.comment %></em></p>
+              <%= link_to "Delete",
+                list_bookmark_path(@list, bookmark),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                class: "btn btn-outline-warning"
+              %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="row bg-light">
-  <% if @list.bookmarks.length == 0 %>
-    <p>There are no bookmarks</p>
-  <% else %>
-    <% @list.bookmarks.each do |bookmark| %>
-      <div class="card border col-3 m-3 p-3">
-        <h3><%= bookmark.movie.title %></h3>
-        <p><%= bookmark.comment %></p>
-        <%= link_to "Delete",
-          list_bookmark_path(@list, bookmark),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-          class: "btn btn-danger"
-        %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addBookmarkModal" tabindex="-1" aria-labelledby="addBookmarkModalLabel" aria-hidden="true">
