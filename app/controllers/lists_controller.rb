@@ -7,6 +7,8 @@ class ListsController < ApplicationController
   def show
     @list = List.includes(bookmarks: :movie).find(params[:id])
     @bookmark = Bookmark.new # for rendering the add new list form
+    @reviews = @list.reviews # for rendering all the reviews under this list
+    @review = Review.new # for rendering the add new review form
   end
 
   def new

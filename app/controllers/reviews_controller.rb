@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     @list = List.find(params[:list_id])
     @review.list = @list
     @review.save
+    redirect_to list_path(@list)
   end
 
   private

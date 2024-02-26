@@ -40,18 +40,36 @@
       <% end %>
     </div>
   </div>
+
 </div>
 
 <hr>
 
-<div>
-  <h2>Reviews on this list</h2>
-  <%%>
-  <%= link_to "Add a Review",
-    new_list_review_path(params[:id]),
-    class: "btn btn-primary"
-  %>
+<div class="d-flex justify-content-center align-items-start">
+  <div class="list-info d-flex flex-column">
+    <h2 class="fs-4">Reviews on this list</h2>
+    <div class="row align-items-start shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div class="review-info w-50 overflow-y-scroll">
+        <% if @list.reviews.length == 0 %>
+          <p>There are no reviews</p>
+        <% else %>
+          <% @list.reviews.each do |review| %>
+            <div class="review-info-card card border p-1">
+              <p class="p-0 m-0"><strong>Comment:</strong> <%= review.comment %></p>
+              <p class="p-0 m-0"><strong>Rating:</strong> <%= "#{review.rating}☆" %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="w-50 bg-secondary p-3">
+        <%= render "/reviews/form", review: @review %>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="addBookmarkModal" tabindex="-1" aria-labelledby="addBookmarkModalLabel" aria-hidden="true">
