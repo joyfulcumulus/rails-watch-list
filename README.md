@@ -1,24 +1,8 @@
-# README
+# Movie Watch List
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is a basic movie watch list.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It has the following features
+* Create a list (to put bookmarks into)
+* Add or remove bookmarks to a list
+* Add reviews about a list
